@@ -1,0 +1,40 @@
+<?php
+
+namespace Tests;
+
+use Cake\Chronos\Chronos;
+use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+
+abstract class TestCase extends BaseTestCase
+{
+    use CreatesApplication;
+
+    /**
+     * Setup tests.
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->setKnownUuidFactory();
+    }
+
+    /**
+     * Tear down tests.
+     */
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+
+        Chronos::setTestNow();
+    }
+
+    /**
+     * Handles the known UUID handling in certain unit tests. Use the "KnownUuid" trait
+     * in order to enable this ability.
+     */
+    public function setKnownUuidFactory()
+    {
+        // do nothing
+    }
+}
